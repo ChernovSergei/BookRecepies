@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b83a94f9-d088-42d3-a790-5861a87294ec" name="Changes" comment="Second class with Ivan. Main method refactory- createRecepie, createRecepieSteps and CreateRecepieStep methods were extracted from the main method.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/RecepieConstructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Runner.java" afterDir="false" />
+    <list default="true" id="b83a94f9-d088-42d3-a790-5861a87294ec" name="Changes" comment="ConsoleClient refactoring 9:20 pm start - 10 pm; 10:25 am - 11:26 am.&#10;All recepie creation methods had been moved into the separate class RecepieConstructor. creatRecepieSteps method had been replaced with addRecepieStep method as soon as list of steps are already part of the Recepie class. All input methods were extracted from recepie creation methods and left in ConsoleClient class. Main static method had been moved into the separate Runner class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConsoleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConsoleClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Recepie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recepie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1735122149766</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ConsoleClient refactoring 9:20 pm start - 10 pm; 10:25 am - 11:26 am.&#10;All recepie creation methods had been moved into the separate class RecepieConstructor. creatRecepieSteps method had been replaced with addRecepieStep method as soon as list of steps are already part of the Recepie class. All input methods were extracted from recepie creation methods and left in ConsoleClient class. Main static method had been moved into the separate Runner class.">
+      <created>1735540194094</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1735540194094</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,6 +133,7 @@
     <MESSAGE value="Initial classes structure (Tool, Recepie, Action, Recepie, RecepieStep, Controller) had been created." />
     <MESSAGE value="Input interface and ConsoleInput class had been added. Strategy pattern is going to be used for different input methods." />
     <MESSAGE value="Second class with Ivan. Main method refactory- createRecepie, createRecepieSteps and CreateRecepieStep methods were extracted from the main method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Second class with Ivan. Main method refactory- createRecepie, createRecepieSteps and CreateRecepieStep methods were extracted from the main method." />
+    <MESSAGE value="ConsoleClient refactoring 9:20 pm start - 10 pm; 10:25 am - 11:26 am.&#10;All recepie creation methods had been moved into the separate class RecepieConstructor. creatRecepieSteps method had been replaced with addRecepieStep method as soon as list of steps are already part of the Recepie class. All input methods were extracted from recepie creation methods and left in ConsoleClient class. Main static method had been moved into the separate Runner class." />
+    <option name="LAST_COMMIT_MESSAGE" value="ConsoleClient refactoring 9:20 pm start - 10 pm; 10:25 am - 11:26 am.&#10;All recepie creation methods had been moved into the separate class RecepieConstructor. creatRecepieSteps method had been replaced with addRecepieStep method as soon as list of steps are already part of the Recepie class. All input methods were extracted from recepie creation methods and left in ConsoleClient class. Main static method had been moved into the separate Runner class." />
   </component>
 </project>
