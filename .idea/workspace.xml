@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b83a94f9-d088-42d3-a790-5861a87294ec" name="Changes" comment="Input interface and ConsoleInput class had been added. Strategy pattern is going to be used for different input methods.">
+    <list default="true" id="b83a94f9-d088-42d3-a790-5861a87294ec" name="Changes" comment="FileStorage from 11 pm till 1 am. DataSaverToFile class had been added to save String data into a file. ReceiptToJSON class had been added to convert a Receipt into JSON format">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DataSaverToFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ReceiptToJSON.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Saver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ConsoleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConsoleClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +53,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataSaverToFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DataSaverToFile" />
+      <module name="BookRecepies" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="BookRecepies" />
@@ -60,6 +70,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ConsoleClient" />
+        <item itemvalue="Application.DataSaverToFile" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -104,6 +115,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial classes structure (Tool, Recepie, Action, Recepie, RecepieStep, Controller) had been created." />
     <MESSAGE value="Input interface and ConsoleInput class had been added. Strategy pattern is going to be used for different input methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="Input interface and ConsoleInput class had been added. Strategy pattern is going to be used for different input methods." />
+    <MESSAGE value="FileStorage from 11 pm till 1 am. DataSaverToFile class had been added to save String data into a file. ReceiptToJSON class had been added to convert a Receipt into JSON format" />
+    <option name="LAST_COMMIT_MESSAGE" value="FileStorage from 11 pm till 1 am. DataSaverToFile class had been added to save String data into a file. ReceiptToJSON class had been added to convert a Receipt into JSON format" />
   </component>
 </project>
