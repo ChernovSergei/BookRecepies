@@ -1,6 +1,3 @@
-import java.util.LinkedList;
-import java.util.List;
-
 public class ConsoleClient {
 
     //TODO: Create two branches for above mentioned modifications (1 hr)
@@ -10,35 +7,23 @@ public class ConsoleClient {
     //TODO: Find good book about Refactoring from Ivan
     private static final Input input = new ConsoleInput();
 
-    public static void main(String[] args) {
-        Recepie recepie = createRecepie();
-        Controller controller = new Controller();
-        controller.saveRecepie(recepie);
+    public static String requestRecepieName() {
+        return input.askString("Enter the recepie name");
     }
 
-    private static Recepie createRecepie() {
-        List<RecepieStep> recepieSteps = createRecepieSteps();
-        String recepieName = input.askString("Enter the recepie name");
-        Recepie recepie = new Recepie(recepieSteps, recepieName);
-        return recepie;
+    public static String requestProductName() {
+        return input.askString("Enter the product name");
     }
 
-    private static List<RecepieStep> createRecepieSteps() {
-        RecepieStep recepieStep = createRecepieStep();
-        List<RecepieStep> recepieSteps = new LinkedList<>();
-        recepieSteps.add(recepieStep);
-        return recepieSteps;
+    public static String requestProductType() {
+        return input.askString("Enter the product type");
     }
 
-    private static RecepieStep createRecepieStep() {
-        String productName = input.askString("Enter the product name");
-        String productType = input.askString("Enter the product type name");
-        String tool = input.askString("Enter the tool name");
-        String action = input.askString("Enter the action name");
-        Product userProduct = new Product(productName, productType);
-        Tool userTool = new Tool(tool);
-        Action userAction = new Action(action);
-        RecepieStep recepieStep = new RecepieStep(userProduct, userTool, userAction);
-        return recepieStep;
+    public static String requestToolName() {
+        return input.askString("Enter the tool name");
+    }
+
+    public static String requestActionName() {
+        return input.askString("Enter the action name");
     }
 }
