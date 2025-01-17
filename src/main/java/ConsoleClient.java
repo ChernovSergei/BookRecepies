@@ -5,25 +5,28 @@ public class ConsoleClient {
     //TODO: Add file storage to saveRecepie (e.g. JSON) (6 hr)
     //TODO: Time estimation skill - estimate required hours for those modifications
     //TODO: Find good book about Refactoring from Ivan
-    private static final Input input = new ConsoleInput();
+    private final Input input = new ConsoleInput();
+    private Controller controller = new Controller();
 
-    public static String requestRecepieName() {
-        return input.askString("Enter the recepie name");
+    public void createRecepie() {
+        String recepieName = input.askString("Enter the recepie name");
+        controller.createReceipe(recepieName);
     }
 
-    public static String requestProductName() {
-        return input.askString("Enter the product name");
+    public void addRecepieStep() {
+        String productName = input.askString("Enter the product name");
+        String productType = input.askString("Enter the product type");
+        String tool = input.askString("Enter the tool name");
+        String action = input.askString("Enter the action name");
+        controller.addRecepieStep(productName, productType, tool, action);
     }
 
-    public static String requestProductType() {
-        return input.askString("Enter the product type");
+    public void saveRecepie() {
+        String savePath = input.askString("Enter directory to save Recepie");
+        String fileName = input.askString("Enter file name to save Recepie");
     }
 
-    public static String requestToolName() {
-        return input.askString("Enter the tool name");
-    }
+    public void getAllRecepies() {
 
-    public static String requestActionName() {
-        return input.askString("Enter the action name");
     }
 }
