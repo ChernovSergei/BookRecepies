@@ -4,24 +4,18 @@ import java.util.List;
 public class Controller {
     private String recepieFormat = "%s the %s with a %s\n";
     private final RecepieConstructor recepieConstructor;
+    private List<Recepie> allRecepies;
 
     public Controller() {
         this.recepieConstructor = new RecepieConstructor();
     }
 
-    public void createReceipe() {
-        recepieConstructor.createRecepie(ConsoleClient.requestRecepieName());
+    public void createReceipe(String recepieName) {
+        recepieConstructor.createRecepie(recepieName);
     }
 
-    public RecepieStep createRecepieStep() {
-        String action = ConsoleClient.requestActionName();
-        String tool = ConsoleClient.requestToolName();
-        String productType = ConsoleClient.requestProductType();
-        String product = ConsoleClient.requestProductName();
-        return recepieConstructor.createRecepieStep(product, productType, tool, action);
-    }
-
-    public void addRecepieStep(RecepieStep recepieStep) {
+    public void addRecepieStep(String product, String productType, String tool, String action) {
+        RecepieStep recepieStep = recepieConstructor.createRecepieStep(product, productType, tool, action);
         recepieConstructor.addRecepieStep(recepieStep);
     }
 

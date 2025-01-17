@@ -3,8 +3,8 @@ public class Runner {
     //TODO Identify if workspace.xml have to be deleted from GIT monitor
     //TODO refactor Controller methods trySaveRecepie() and getAllRecepies()
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.createReceipe();
-        controller.addRecepieStep(controller.createRecepieStep());
+        ConsoleClient input = new ConsoleClient();
+        input.createRecepie();
+        input.addRecepieStep();
     }
 }
