@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b83a94f9-d088-42d3-a790-5861a87294ec" name="Changes" comment="FileStorage from 11 pm till 1 am. DataSaverToFile class had been added to save String data into a file. ReceiptToJSON class had been added to convert a Receipt into JSON format">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DataSaverToFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReceiptToJSON.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Saver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="814f05cb-0d44-4028-a43d-f45d57e9fc17" name="Changes" comment="callback methods between UI and controller were deleted. UI and controller had been be separated as it was in commit dated by 25 December 2024">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ConsoleClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ConsoleClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Runner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1733744612908</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="callback methods between UI and controller were deleted. UI and controller had been be separated as it was in commit dated by 25 December 2024">
+      <created>1737118899499</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737118899499</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,7 +119,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="FileStorage" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -124,6 +141,7 @@
     <MESSAGE value="Initial classes structure (Tool, Recepie, Action, Recepie, RecepieStep, Controller) had been created." />
     <MESSAGE value="Input interface and ConsoleInput class had been added. Strategy pattern is going to be used for different input methods." />
     <MESSAGE value="FileStorage from 11 pm till 1 am. DataSaverToFile class had been added to save String data into a file. ReceiptToJSON class had been added to convert a Receipt into JSON format" />
-    <option name="LAST_COMMIT_MESSAGE" value="FileStorage from 11 pm till 1 am. DataSaverToFile class had been added to save String data into a file. ReceiptToJSON class had been added to convert a Receipt into JSON format" />
+    <MESSAGE value="callback methods between UI and controller were deleted. UI and controller had been be separated as it was in commit dated by 25 December 2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="callback methods between UI and controller were deleted. UI and controller had been be separated as it was in commit dated by 25 December 2024" />
   </component>
 </project>
