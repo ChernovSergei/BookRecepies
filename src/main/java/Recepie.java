@@ -25,4 +25,12 @@ public class Recepie {
     public void setSteps(List<RecepieStep> steps) {
         this.steps = steps;
     }
+
+    @Override
+    public String toString() {
+        return "Recepie{" +
+                "name='" + name + '\'' +
+                ", steps=" + steps +
+                '}';
+    }
 }

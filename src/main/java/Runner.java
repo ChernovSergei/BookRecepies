@@ -6,6 +6,8 @@ public class Runner {
         ConsoleClient input = new ConsoleClient();
         input.createRecepie();
         input.addRecepieStep();
+        input.addRecepieStep();
         input.saveRecepieToFile();
+        input.printAllRecepies();
     }
 }

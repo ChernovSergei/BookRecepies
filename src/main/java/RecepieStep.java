@@ -35,4 +35,14 @@ public class RecepieStep {
     public void setAction(Action action) {
         this.action = action;
     }
+
+    @Override
+    public String toString() {
+        return "RecepieStep{" +
+                "product=" + product +
+                ", tool=" + tool +
+                ", action=" + action +
+                ", subSteps=" + subSteps +
+                '}';
+    }
 }

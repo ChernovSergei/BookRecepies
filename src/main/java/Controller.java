@@ -2,9 +2,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class Controller {
-    private String recepieFormat = "%s the %s with a %s\n";
     private final RecepieConstructor recepieConstructor;
     private Recepie currentRecepie = null;
+    private List<Recepie> recepies = null;
 
     public Controller() {
         this.recepieConstructor = new RecepieConstructor();
@@ -19,10 +19,14 @@ public class Controller {
         recepieConstructor.addRecepieStep(recepieStep);
     }
 
-    //TODO Refactor get All Recepies. Think were store the method result
-    public List<Recepie> getAllRecepies(String fileStorageDirectory, String fileStorageName) throws IOException {
-        ReceiptsReaderFromFile readerFromFile = new ReceiptsReaderFromFile(fileStorageDirectory, fileStorageName);
-        return readerFromFile.returnListOfRecepies();
+    public List<Recepie> getAllRecepies(String fileStorageDirectory, String fileStorageName) {
+        try {
+            ReceiptsReaderFromFile readerFromFile = new ReceiptsReaderFromFile(fileStorageDirectory, fileStorageName);
+            recepies = readerFromFile.returnListOfRecepies();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return recepies;
     }
 
     //TODO Add check - if currentRecepie == null

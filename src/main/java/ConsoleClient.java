@@ -23,6 +23,10 @@ public class ConsoleClient {
         controller.trySaveRecepie(recepiesStorageFileDirrectory, recepiesStorageFileName);
     }
 
+    public void printAllRecepies() {
+        controller.getAllRecepies(recepiesStorageFileDirrectory, recepiesStorageFileName).forEach(System.out::println);
+    }
+
     public void assignStorageFileNameAndDirectory() {
         String areChangesRequired = "Enter 'Yes' if storage name and directory must be Replaced";
         if (recepiesStorageFileDirrectory == null || recepiesStorageFileName == null
