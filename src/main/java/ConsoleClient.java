@@ -1,12 +1,5 @@
 public class ConsoleClient {
 
-    //TODO refactor Controller methods trySaveRecepie() and getAllRecepies()
-    //TODO: Create two branches for above mentioned modifications (1 hr)
-    //TODO: Refactor ConsoleClient class (4 hr)
-    //TODO: Add file storage to saveRecepie (e.g. JSON) (6 hr)
-    //TODO: Time estimation skill - estimate required hours for those modifications
-    //TODO: Find good book about Refactoring from Ivan
-    //TODO Identify if workspace.xml have to be deleted from GIT monitor
     private final Input input = new ConsoleInput();
     private Controller controller = new Controller();
     private String recepiesStorageFileDirrectory = null;
@@ -25,8 +18,17 @@ public class ConsoleClient {
         controller.addRecepieStep(productName, productType, tool, action);
     }
 
+    public void saveRecepieToFile() {
+        assignStorageFileNameAndDirectory();
+        controller.trySaveRecepie(recepiesStorageFileDirrectory, recepiesStorageFileName);
+    }
+
     public void assignStorageFileNameAndDirectory() {
-        recepiesStorageFileDirrectory = input.askString("Enter directory to save Recepie");
-        recepiesStorageFileName = input.askString("Enter file name to save Recepie");
+        String areChangesRequired = "Enter 'Yes' if storage name and directory must be Replaced";
+        if (recepiesStorageFileDirrectory == null || recepiesStorageFileName == null
+                || input.askString(areChangesRequired).equals("Yes")) {
+            recepiesStorageFileDirrectory = input.askString("Enter directory to save Recepie");
+            recepiesStorageFileName = input.askString("Enter file name to save Recepie");
+        }
     }
 }
