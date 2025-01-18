@@ -7,7 +7,7 @@ public class Runner {
         input.createRecepie();
         input.addRecepieStep();
         input.addRecepieStep();
-        input.saveRecepieToFile();
+        input.saveRecepie();
         input.printAllRecepies();
     }
 }
