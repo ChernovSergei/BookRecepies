@@ -10,7 +10,7 @@ public class ReceiptsReaderFromFile {
 
     public ReceiptsReaderFromFile(String directory, String file) throws IOException {
         this.directory = Path.of(directory);
-        String fullDirectory = directory + file;
+        String fullDirectory = directory + "/" + file;
         this.fullDirectory = Path.of(fullDirectory);
         if (!Files.exists(this.directory)) {
             Files.createDirectories(this.directory);
@@ -20,9 +20,13 @@ public class ReceiptsReaderFromFile {
         }
     }
 
-    public List<Recepie> returnListOfRecepies() throws IOException {
+    public List<Recepie> returnListOfRecepies() {
         List<Recepie> result = new ArrayList<>();
-        result.add(JSONtoRecepie.convertJSONtoRecepie(Files.readString(this.directory.toAbsolutePath())));
+        try {
+            result.add(JSONtoRecepie.convertJSONtoRecepie(Files.readString(this.fullDirectory)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 }

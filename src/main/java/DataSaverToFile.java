@@ -8,7 +8,7 @@ public class DataSaverToFile implements Saver {
 
     public DataSaverToFile(String directory, String file) throws IOException {
         this.directory = Path.of(directory);
-        String fullDirectory = directory + file;
+        String fullDirectory = directory + "/" + file;
         this.fullDirectory = Path.of(fullDirectory);
         if (!Files.exists(this.directory)) {
             Files.createDirectories(this.directory);
