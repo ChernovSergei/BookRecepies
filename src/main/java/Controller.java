@@ -4,7 +4,6 @@ import java.util.List;
 public class Controller {
     private String recepiesStorageFileDirrectory = "path";
     private String recepiesStorageFileName = "Recepies.txt";
-    //TODO Move these variables from Controller to ConsoleClient. Temporary Recepie state must be located on client side.
     //API - application programmable interface. In this case, these two methods to getRecepies and saveRecepie
     public List<Recepie> getAllRecepies() {
         List<Recepie> allRecepies = null;
@@ -17,7 +16,7 @@ public class Controller {
         return allRecepies;
     }
 
-    //TODO Add check - if currentRecepie == null
+    //TODO: Add check - if currentRecepie == null
     public void saveRecepie(Recepie recepie) {
         String JSONRecepie = ReceiptToJSON.convertRecepieIntoStringJSON(recepie);
         try {

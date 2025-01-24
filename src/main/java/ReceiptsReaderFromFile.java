@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ReceiptsReaderFromFile {
     private final Path directory;
@@ -23,7 +24,10 @@ public class ReceiptsReaderFromFile {
     public List<Recepie> returnListOfRecepies() {
         List<Recepie> result = new ArrayList<>();
         try {
-            result.add(JSONtoRecepie.convertJSONtoRecepie(Files.readString(this.fullDirectory)));
+            Scanner scanner = new Scanner(Files.readString(this.fullDirectory)).useDelimiter("\n");
+            while(scanner.hasNext()) {
+                result.add(JSONtoRecepie.convertJSONtoRecepie(scanner.next()));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
