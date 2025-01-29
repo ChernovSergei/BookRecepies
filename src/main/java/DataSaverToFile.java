@@ -22,7 +22,7 @@ public class DataSaverToFile implements Saver {
     public void saveData(String data) {
         try (PrintWriter output = new PrintWriter(
                 new BufferedOutputStream(
-                        new FileOutputStream(this.fullDirectory.toFile())))) {
+                        new FileOutputStream(this.fullDirectory.toFile(), true)))) {
             output.println(data);
         } catch (IOException e) {
             e.printStackTrace();
