@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Objects;
 
 public class RecepieStep {
     private Product product;
@@ -44,5 +45,19 @@ public class RecepieStep {
                 ", action=" + action +
                 ", subSteps=" + subSteps +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RecepieStep that = (RecepieStep) o;
+        return Objects.equals(product, that.product) && Objects.equals(tool, that.tool)
+                && Objects.equals(action, that.action) && Objects.equals(subSteps, that.subSteps);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(product, tool, action, subSteps);
     }
 }

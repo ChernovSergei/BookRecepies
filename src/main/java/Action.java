@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Action {
     private String name;
 
@@ -18,5 +20,18 @@ public class Action {
         return "Action{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Action action = (Action) o;
+        return Objects.equals(name, action.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

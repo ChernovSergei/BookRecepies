@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+//TODO: Refactor - rename DataSaverToFile class to ReceiptsWriterToFile class
 public class DataSaverToFile implements Saver {
     private final Path directory;
     private final Path fullDirectory;
