@@ -1,31 +1,49 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-//TODO: Refactor - rename DataSaverToFile class to ReceiptsWriterToFile class
 public class ReceiptsJSONFileStorage {
-    private final Path directory;
     private final Path fullDirectory;
 
-    public ReceiptsJSONFileStorage(String directory, String file) throws IOException {
-        this.directory = Path.of(directory);
-        String fullDirectory = directory + "/" + file;
+    public ReceiptsJSONFileStorage() throws IOException {
+        //Evil row
+        String recepiesStorageFileDirrectory = "path";
+        String recepiesStorageFileName = "Recepies.txt";
+        Path directory = Path.of(recepiesStorageFileDirrectory);
+        String fullDirectory = directory + "/" + recepiesStorageFileName;
         this.fullDirectory = Path.of(fullDirectory);
-        if (!Files.exists(this.directory)) {
-            Files.createDirectories(this.directory);
+        if (!Files.exists(directory)) {
+            Files.createDirectories(directory);
         }
         if (!Files.exists(this.fullDirectory)) {
             Files.createFile(this.fullDirectory);
         }
     }
 
-    public void saveData(String data) {
+    public void saveData(Recepie recepie) {
+        String JSONRecepie = ReceiptToJSON.convertRecepieIntoStringJSON(recepie);
         try (PrintWriter output = new PrintWriter(
                 new BufferedOutputStream(
                         new FileOutputStream(this.fullDirectory.toFile(), true)))) {
-            output.println(data);
+            output.println(JSONRecepie);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Recepie> returnListOfRecepies() {
+        List<Recepie> result = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(Files.readString(this.fullDirectory)).useDelimiter("\n");
+            while(scanner.hasNext()) {
+                result.add(JSONtoRecepie.convertJSONtoRecepie(scanner.next()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
