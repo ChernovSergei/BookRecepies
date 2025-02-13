@@ -1,5 +1,4 @@
 public class Runner {
-
     //TODO: Manage several recepies creation which will be stored in one file.
     // New receipes could be added without overwritting
     //TODO: Add Auto Tests for Receipes creation.

@@ -5,6 +5,14 @@
   <artifactId>BookRecepies</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.4.0</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
   <properties>
     <maven.compiler.source>18</maven.compiler.source>
     <maven.compiler.target>18</maven.compiler.target>
@@ -12,6 +20,14 @@
   <name>BookRecepies Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

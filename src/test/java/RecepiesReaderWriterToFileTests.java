@@ -39,7 +39,7 @@ public class RecepiesReaderWriterToFileTests {
         try {
             Path testStorageFile = Path.of(path + "/" + fileName);
             Files.deleteIfExists(testStorageFile);
-            DataSaverToFile recepieWriteToFile = new DataSaverToFile(path, fileName);
+            ReceiptsJSONFileStorage recepieWriteToFile = new ReceiptsJSONFileStorage(path, fileName);
             ReceiptsReaderFromFile recepieFromFile = new ReceiptsReaderFromFile(path, fileName);
             recepieWriteToFile.saveData(actualRecepie);
             actualRecepieList = recepieFromFile.returnListOfRecepies();
@@ -104,7 +104,7 @@ public class RecepiesReaderWriterToFileTests {
         try {
             Path testStorageFile = Path.of(path + "/" + fileName);
             Files.deleteIfExists(testStorageFile);
-            DataSaverToFile recepieWriteToFile = new DataSaverToFile(path, fileName);
+            ReceiptsJSONFileStorage recepieWriteToFile = new ReceiptsJSONFileStorage(path, fileName);
             ReceiptsReaderFromFile recepieFromFile = new ReceiptsReaderFromFile(path, fileName);
             recepieWriteToFile.saveData(actualRecepie1);
             recepieWriteToFile.saveData(actualRecepie2);

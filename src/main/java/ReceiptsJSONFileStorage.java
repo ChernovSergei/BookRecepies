@@ -3,11 +3,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 //TODO: Refactor - rename DataSaverToFile class to ReceiptsWriterToFile class
-public class DataSaverToFile implements Saver {
+public class ReceiptsJSONFileStorage {
     private final Path directory;
     private final Path fullDirectory;
 
-    public DataSaverToFile(String directory, String file) throws IOException {
+    public ReceiptsJSONFileStorage(String directory, String file) throws IOException {
         this.directory = Path.of(directory);
         String fullDirectory = directory + "/" + file;
         this.fullDirectory = Path.of(fullDirectory);
@@ -19,7 +19,6 @@ public class DataSaverToFile implements Saver {
         }
     }
 
-    @Override
     public void saveData(String data) {
         try (PrintWriter output = new PrintWriter(
                 new BufferedOutputStream(
