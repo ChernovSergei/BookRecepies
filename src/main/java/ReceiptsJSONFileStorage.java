@@ -8,12 +8,10 @@ import java.util.Scanner;
 public class ReceiptsJSONFileStorage implements RecepiesStorage {
     private final Path fullDirectory;
 
-    public ReceiptsJSONFileStorage() throws IOException {
+    public ReceiptsJSONFileStorage(String storageDirectory, String storageName) throws IOException {
         //Evil row
-        String recepiesStorageFileDirrectory = "path";
-        String recepiesStorageFileName = "Recepies.txt";
-        Path directory = Path.of(recepiesStorageFileDirrectory);
-        String fullDirectory = directory + "/" + recepiesStorageFileName;
+        Path directory = Path.of(storageDirectory);
+        String fullDirectory = directory + "/" + storageName;
         this.fullDirectory = Path.of(fullDirectory);
         if (!Files.exists(directory)) {
             Files.createDirectories(directory);

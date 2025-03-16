@@ -11,7 +11,9 @@ public class Runner {
 
     //TODO: Question - is it good practice to combine all classes Action/Tool/Product into one package
     public static void main(String[] args) throws IOException {
-        RecepiesStorage recepiesStorage = new ReceiptsJSONFileStorage();
+        String storageDirectory = "path";
+        String storageName = "Recepies.txt";
+        RecepiesStorage recepiesStorage = new ReceiptsJSONFileStorage(storageDirectory, storageName);
         RecepiesService recepiesService = new Controller(recepiesStorage);
         ConsoleClient input = new ConsoleClient(recepiesService);
         input.createRecepie();
