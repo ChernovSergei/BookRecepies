@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ReceiptsJSONFileStorage {
+public class ReceiptsJSONFileStorage implements RecepiesStorage {
     private final Path fullDirectory;
 
     public ReceiptsJSONFileStorage() throws IOException {
@@ -23,7 +23,8 @@ public class ReceiptsJSONFileStorage {
         }
     }
 
-    public void saveRecepie(Recepie recepie) {
+    @Override
+    public void save(Recepie recepie) {
         String JSONRecepie = JSONRecepieConverter.recepieToJson(recepie);
         try (PrintWriter output = new PrintWriter(
                 new BufferedOutputStream(
@@ -34,7 +35,8 @@ public class ReceiptsJSONFileStorage {
         }
     }
 
-    public List<Recepie> getRecepies() {
+    @Override
+    public List<Recepie> getAll() {
         List<Recepie> result = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(Files.readString(this.fullDirectory)).useDelimiter("\n");

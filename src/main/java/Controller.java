@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Controller {
+public class Controller implements RecepiesService {
     private RecepiesStorage recepiesStorage;
 
     public Controller(RecepiesStorage recepiesStorage) {
@@ -21,7 +21,8 @@ public class Controller {
     //TODO: Create constructor for ConsoleClient and accept
     //TODO: Install Visual Studio and add DeepSeek
 
-    public void saveRecepie(Recepie recepie) {
+    @Override
+    public void save(Recepie recepie) {
         try {
             recepiesStorage.save(recepie);
         } catch (Exception e) {

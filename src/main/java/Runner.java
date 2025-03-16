@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.Serializable;
 
 public class Runner {
@@ -9,7 +10,7 @@ public class Runner {
     //TODO: Find good book about Refactoring from Ivan
 
     //TODO: Question - is it good practice to combine all classes Action/Tool/Product into one package
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         RecepiesStorage recepiesStorage = new ReceiptsJSONFileStorage();
         RecepiesService recepiesService = new Controller(recepiesStorage);
         ConsoleClient input = new ConsoleClient(recepiesService);
