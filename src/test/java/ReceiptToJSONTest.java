@@ -1,5 +1,4 @@
 import junit.framework.Assert;
-import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class ReceiptToJSONTest {
         RecepieStep recepieStep = new RecepieStep(beetRoot, knife, cut);
         recepieSteps.add(recepieStep);
         testRecepie.setSteps(recepieSteps);
-        String result = ReceiptToJSON.convertRecepieIntoStringJSON(testRecepie);
+        String result = JSONRecepieConverter.recepieToJson(testRecepie);
         String expectedRecepie = "{\"name\":\"Borsch\",\"steps\":[{\"product\":{\"name\":\"Beet root\",\"type\":\"Vegetable\"},\"tool\":{\"name\":\"Knife\"},\"action\":{\"name\":\"Cut\"}}]}";
         Assert.assertEquals(expectedRecepie, result);
     }

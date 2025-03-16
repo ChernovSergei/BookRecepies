@@ -1,34 +1,41 @@
-import java.io.IOException;
 import java.util.List;
 
 public class Controller {
-    private final ReceiptsJSONFileStorage dataSaver;
+    private RecepiesStorage recepiesStorage;
+
+    public Controller(RecepiesStorage recepiesStorage) {
+        this.recepiesStorage = recepiesStorage;
+    }
     //ReceiptsJSONFileStorage storage = new ReceiptsJSONFileStorage();
     //API - application programmable interface. In this case, these two methods to getRecepies and saveRecepie
+    //RESTfull API - ???
     //Low responsibilities shouldn't be located at upper level
     //High responsibilities shouldn't be located at lower level
     //Try to keep hierarhy from upper to lower
     //Learn throw new RuntimeException
-    //TODO: - check short cut for Intelijj to move methods inside the class
-    //TODO: Add check - if currentRecepie == null
+    //check short cuts for Intelijj to move methods inside the class
     //TODO: Modify the application for future expansion to save/ read Users' data
     //TODO: Modify the application for future expansion to save/ read data in XML
     //TODO: How fight the evil row #6
+    //TODO: Fix try catch inside ReceiptsJSONFileStorage, methods must throw exceptions
+    //TODO: Create constructor for ConsoleClient and accept
+    //TODO: Install Visual Studio and add DeepSeek
 
-    public Controller() {
+    public void saveRecepie(Recepie recepie) {
         try {
-            this.dataSaver = new ReceiptsJSONFileStorage();
+            recepiesStorage.save(recepie);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Sorry!!! Unable to save a recepie");
         }
     }
 
-    public void saveRecepie(Recepie recepie) {
-        dataSaver.saveData(recepie);
-    }
-
     public List<Recepie> getAllRecepies() {
-        return dataSaver.returnListOfRecepies();
+        try {
+            return recepiesStorage.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Sorry!!! Unable to read the receipts");
+        }
     }
 }

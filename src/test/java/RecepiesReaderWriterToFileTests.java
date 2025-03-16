@@ -41,7 +41,7 @@ public class RecepiesReaderWriterToFileTests {
             Files.deleteIfExists(testStorageFile);
             ReceiptsJSONFileStorage recepieWriteToFile = new ReceiptsJSONFileStorage(path, fileName);
             ReceiptsReaderFromFile recepieFromFile = new ReceiptsReaderFromFile(path, fileName);
-            recepieWriteToFile.saveData(actualRecepie);
+            recepieWriteToFile.saveRecepie(actualRecepie);
             actualRecepieList = recepieFromFile.returnListOfRecepies();
             Files.deleteIfExists(testStorageFile);
         } catch (IOException e) {
@@ -106,8 +106,8 @@ public class RecepiesReaderWriterToFileTests {
             Files.deleteIfExists(testStorageFile);
             ReceiptsJSONFileStorage recepieWriteToFile = new ReceiptsJSONFileStorage(path, fileName);
             ReceiptsReaderFromFile recepieFromFile = new ReceiptsReaderFromFile(path, fileName);
-            recepieWriteToFile.saveData(actualRecepie1);
-            recepieWriteToFile.saveData(actualRecepie2);
+            recepieWriteToFile.saveRecepie(actualRecepie1);
+            recepieWriteToFile.saveRecepie(actualRecepie2);
             actualRecepieList = recepieFromFile.returnListOfRecepies();
             Files.deleteIfExists(testStorageFile);
         } catch (IOException e) {

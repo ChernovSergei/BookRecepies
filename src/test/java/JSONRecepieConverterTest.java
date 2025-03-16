@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONtoRecepieTest {
+public class JSONRecepieConverterTest {
 
     @Test
     public void whenExpectedEqualsToActualRecepie() {
@@ -22,7 +22,7 @@ public class JSONtoRecepieTest {
         recepieSteps.add(recepieStep);
         expectedRecepie.setSteps(recepieSteps);
         String recepieInJSON = "{\"name\":\"Borsch\",\"steps\":[{\"product\":{\"name\":\"Beet root\",\"type\":\"Vegetable\"},\"tool\":{\"name\":\"Knife\"},\"action\":{\"name\":\"Cut\"}}]}";
-        Recepie result = JSONtoRecepie.convertJSONtoRecepie(recepieInJSON);
+        Recepie result = JSONRecepieConverter.jsonToRecepie(recepieInJSON);
         Assert.assertEquals(expectedRecepie, result);
     }
 }

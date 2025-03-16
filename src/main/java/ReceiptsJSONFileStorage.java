@@ -23,8 +23,8 @@ public class ReceiptsJSONFileStorage {
         }
     }
 
-    public void saveData(Recepie recepie) {
-        String JSONRecepie = ReceiptToJSON.convertRecepieIntoStringJSON(recepie);
+    public void saveRecepie(Recepie recepie) {
+        String JSONRecepie = JSONRecepieConverter.recepieToJson(recepie);
         try (PrintWriter output = new PrintWriter(
                 new BufferedOutputStream(
                         new FileOutputStream(this.fullDirectory.toFile(), true)))) {
@@ -34,12 +34,12 @@ public class ReceiptsJSONFileStorage {
         }
     }
 
-    public List<Recepie> returnListOfRecepies() {
+    public List<Recepie> getRecepies() {
         List<Recepie> result = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(Files.readString(this.fullDirectory)).useDelimiter("\n");
             while(scanner.hasNext()) {
-                result.add(JSONtoRecepie.convertJSONtoRecepie(scanner.next()));
+                result.add(JSONRecepieConverter.jsonToRecepie(scanner.next()));
             }
         } catch (IOException e) {
             e.printStackTrace();

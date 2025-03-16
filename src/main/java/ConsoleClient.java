@@ -1,8 +1,12 @@
 public class ConsoleClient {
 
     private final Input input = new ConsoleInput();
-    private Controller controller = new Controller();
+    private RecepiesService service;
     private final RecepieConstructor recepieConstructor = new RecepieConstructor();
+
+    public ConsoleClient(RecepiesService service) {
+        this.service = service;
+    }
 
     public void createRecepie() {
         String recepieName = input.askString("Enter the recepie name");
@@ -18,10 +22,10 @@ public class ConsoleClient {
     }
 
     public void saveRecepie() {
-        controller.saveRecepie(recepieConstructor.getRecepie());
+        service.save(recepieConstructor.getRecepie());
     }
 
     public void printAllRecepies() {
-        controller.getAllRecepies().forEach(System.out::println);
+        service.getAllRecepies().forEach(System.out::println);
     }
 }
