@@ -1,6 +1,7 @@
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
-import java.io.Serializable;
 
+@SpringBootApplication
 public class Runner {
     //TODO: Manage several recepies creation which will be stored in one file.
     // New receipes could be added without overwritting
