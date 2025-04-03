@@ -19,10 +19,8 @@ public class Runner{
         String storageName = "Recepies.txt";
         RecepiesStorage recepiesStorage = new ReceiptsJSONFileStorage(storagePath, storageName);
         List<Recepie> recepies = recepiesStorage.getAll();
-        List<String> jsonRecepies = recepies.stream()
-                .map(JSONRecepieConverter::recepieToJson)
-                .collect(Collectors.toList());
-        String response = "[" + String.join(",", jsonRecepies) + "]";
+        com.google.gson.Gson gson = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        String response = gson.toJson(recepies);
         int port = 80;
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/all", new HttpHandler() {
@@ -32,6 +30,33 @@ public class Runner{
                 exchange.sendResponseHeaders(200, response.getBytes().length);
                 OutputStream os = exchange.getResponseBody();
                 os.write(response.getBytes());
+                os.close();
+            }
+        });
+        server.createContext("/html", new HttpHandler() {
+            @Override
+            public void handle(HttpExchange exchange) throws IOException {
+                StringBuilder htmlResponse = new StringBuilder();
+                htmlResponse.append("<!DOCTYPE html\n>");
+                htmlResponse.append("<html lang=\"en\">\n");
+                htmlResponse.append("<head>\n");
+                htmlResponse.append("   <meta charset=\"UTF-8\">\n");
+                htmlResponse.append("   <meta name=\"viewport\" content=\"width=device-width\">\n");
+                htmlResponse.append("   <title>Recipes</title>\n");
+                htmlResponse.append("</head>\n");
+                htmlResponse.append("<body>\n");
+                htmlResponse.append("   <h1>Recipes</h1>\n");
+                htmlResponse.append("   <ul>\n");
+                for (Recepie recepie : recepies) {
+                    htmlResponse.append("       <li>" + recepie.getName() + "</li>\n");
+                }
+                htmlResponse.append("   </ul>\n");
+                htmlResponse.append("</body>\n");
+                htmlResponse.append("</html>\n");
+                exchange.getResponseHeaders().set("Content-Type", "text/html");
+                exchange.sendResponseHeaders(200, htmlResponse.toString().length());
+                OutputStream os = exchange.getResponseBody();
+                os.write(htmlResponse.toString().getBytes());
                 os.close();
             }
         });
