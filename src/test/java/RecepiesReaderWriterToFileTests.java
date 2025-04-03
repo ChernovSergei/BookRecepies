@@ -39,10 +39,12 @@ public class RecepiesReaderWriterToFileTests {
         try {
             Path testStorageFile = Path.of(path + "/" + fileName);
             Files.deleteIfExists(testStorageFile);
-            ReceiptsJSONFileStorage recepieWriteToFile = new ReceiptsJSONFileStorage(path, fileName);
-            ReceiptsReaderFromFile recepieFromFile = new ReceiptsReaderFromFile(path, fileName);
-            recepieWriteToFile.saveRecepie(actualRecepie);
-            actualRecepieList = recepieFromFile.returnListOfRecepies();
+            ReceiptsJSONFileStorage recepiesStorage = new ReceiptsJSONFileStorage(path, fileName);
+            //recepieWriteToFile.saveRecepie(actualRecepie);
+            List<Recepie> recepies = new ArrayList<>();
+            recepies.add(expectedRecepie);
+            recepiesStorage.saveAll(recepies);
+            actualRecepieList = recepiesStorage.getAll();
             Files.deleteIfExists(testStorageFile);
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,7 +52,7 @@ public class RecepiesReaderWriterToFileTests {
         Assert.assertEquals(1, actualRecepieList.size());
         Assert.assertEquals(expectedRecepie, actualRecepieList.get(0));
     }
-    
+
     @Test
     public void writeAndReadTwoRecepiesFromFile() {
         String recepieName1 = "Borsch";
@@ -104,11 +106,14 @@ public class RecepiesReaderWriterToFileTests {
         try {
             Path testStorageFile = Path.of(path + "/" + fileName);
             Files.deleteIfExists(testStorageFile);
-            ReceiptsJSONFileStorage recepieWriteToFile = new ReceiptsJSONFileStorage(path, fileName);
-            ReceiptsReaderFromFile recepieFromFile = new ReceiptsReaderFromFile(path, fileName);
-            recepieWriteToFile.saveRecepie(actualRecepie1);
-            recepieWriteToFile.saveRecepie(actualRecepie2);
-            actualRecepieList = recepieFromFile.returnListOfRecepies();
+            ReceiptsJSONFileStorage recepiesStorage = new ReceiptsJSONFileStorage(path, fileName);
+            //recepieWriteToFile.saveRecepie(actualRecepie1);
+            //recepieWriteToFile.saveRecepie(actualRecepie2);
+            List<Recepie> recepies = new ArrayList<>();
+            recepies.add(expectedRecepie1);
+            recepies.add(expectedRecepie2);
+            recepiesStorage.saveAll(recepies);
+            actualRecepieList = recepiesStorage.getAll();
             Files.deleteIfExists(testStorageFile);
         } catch (IOException e) {
             e.printStackTrace();

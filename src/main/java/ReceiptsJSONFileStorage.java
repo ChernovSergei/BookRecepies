@@ -46,4 +46,10 @@ public class ReceiptsJSONFileStorage implements RecepiesStorage {
         }
         return result;
     }
+
+    public void saveAll(List<Recepie> recepies) {
+        for (Recepie recepie : recepies) {
+            save(recepie);
+        }
+    }
 }
