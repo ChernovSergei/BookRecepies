@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recepies</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Recepies</h1>
+    <ul>
+        <li th:each="recepie : ${recepies}">
+            <a th:href="@{/recepie/{name}(name=${recepie.name})}" th:text="'Recepie: ' + ${recepie.name}">
+            </a>
+        </li>
+    </ul>
+</body>
+</html>
