@@ -1,25 +1,38 @@
-import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpExchange;
+package controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import service.Recepie;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Runner{
     //TODO: Add Auto Tests for Receipes creation.
     //TODO: Separate client and server locally. There should be two separate apps (console and server)
-    //TODO: Time estimation skill - estimate required hours for those modifications
+    //TODO: Fix try catch inside service.ReceiptsJSONFileStorage, methods must throw exceptions
     //TODO: Find good book about Refactoring from Ivan
-    //TODO: Question - is it good practice to combine all classes Action/Tool/Product into one package
-    public static void main(String[] args) throws IOException{
+    //TODO: Question - is it good practice to combine all classes service.Action/service.Tool/service.Product into one package
+    //TODO: Learn throw new RuntimeException
+    //TODO: check short cuts for Intelijj to move methods inside the class. How combine them with VIM shortcuts
+    //TODO: RESTfull API - ???
+    //TODO: Time estimation skill - practice required hours estimation to implement modifications
+    //Theory
+    //API - application programmable interface. In this case, these two methods to getRecepies and saveRecepie
+    //Low responsibilities shouldn't be located at upper level
+    //High responsibilities shouldn't be located at lower level
+    //Try to keep hierarhy from upper to lower
+    //DI container
+
+    public String run() throws IOException{
+        StringBuilder result = new StringBuilder();
         String storagePath = "path";
         String storageName = "Recepies.txt";
-        RecepiesStorage recepiesStorage = new ReceiptsJSONFileStorage(storagePath, storageName);
+        service.RecepiesStorage recepiesStorage = new service.ReceiptsJSONFileStorage(storagePath, storageName);
         List<Recepie> recepies = recepiesStorage.getAll();
-        com.google.gson.Gson gson = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+        recepies.forEach(result::append);
+        return result.toString();
+/*        com.google.gson.Gson gson = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
         String response = gson.toJson(recepies);
         int port = 80;
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
@@ -47,7 +60,7 @@ public class Runner{
                 htmlResponse.append("<body>\n");
                 htmlResponse.append("   <h1>Recipes</h1>\n");
                 htmlResponse.append("   <ul>\n");
-                for (Recepie recepie : recepies) {
+                for (service.Recepie recepie : recepies) {
                     htmlResponse.append("       <li>" + recepie.getName() + "</li>\n");
                 }
                 htmlResponse.append("   </ul>\n");
@@ -62,6 +75,6 @@ public class Runner{
         });
         server.setExecutor(null); // creates a default executor
         server.start();
-        System.out.println("Server started on port " + port);
+        System.out.println("Server started on port " + port);*/
     }
 }

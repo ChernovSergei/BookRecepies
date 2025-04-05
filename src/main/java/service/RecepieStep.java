@@ -1,3 +1,5 @@
+package service;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -39,7 +41,7 @@ public class RecepieStep {
 
     @Override
     public String toString() {
-        return "RecepieStep{" +
+        return "service.RecepieStep{" +
                 "product=" + product +
                 ", tool=" + tool +
                 ", action=" + action +

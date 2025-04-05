@@ -1,3 +1,5 @@
+package service;
+
 public class RecepieConstructor {
     private Recepie recepie;
 

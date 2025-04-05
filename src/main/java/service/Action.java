@@ -1,3 +1,5 @@
+package service;
+
 import java.util.Objects;
 
 public class Action {
@@ -17,7 +19,7 @@ public class Action {
 
     @Override
     public String toString() {
-        return "Action{" +
+        return "service.Action{" +
                 "name='" + name + '\'' +
                 '}';
     }

@@ -1,3 +1,7 @@
+package service;
+
+import controller.RecepiesService;
+
 public class ConsoleClient {
 
     private final Input input = new ConsoleInput();
