@@ -1,3 +1,5 @@
+package service;
+
 import java.util.Objects;
 
 public class Tool {
@@ -17,7 +19,7 @@ public class Tool {
 
     @Override
     public String toString() {
-        return "Tool{" +
+        return "service.Tool{" +
                 "name='" + name + '\'' +
                 '}';
     }

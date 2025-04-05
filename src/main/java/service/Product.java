@@ -1,3 +1,5 @@
+package service;
+
 import java.util.Objects;
 
 public class Product {
@@ -28,7 +30,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "service.Product{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 '}';

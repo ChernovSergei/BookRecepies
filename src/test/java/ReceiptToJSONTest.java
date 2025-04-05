@@ -1,5 +1,7 @@
 import junit.framework.Assert;
 import org.junit.Test;
+import service.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
