@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.Recepie;
 import service.RecepiesStorage;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
