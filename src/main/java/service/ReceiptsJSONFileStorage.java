@@ -7,11 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ReceiptsJSONFileStorage implements RecepiesStorage {
     private final Path fullDirectory;
 
-    public ReceiptsJSONFileStorage(String storageDirectory, String storageName) throws IOException {
-        //Evil row
+    public ReceiptsJSONFileStorage(@Value("${storage.directory}") String storageDirectory,@Value("${storage.path}") String storageName) throws IOException {
         Path directory = Path.of(storageDirectory);
         String fullDirectory = directory + "/" + storageName;
         this.fullDirectory = Path.of(fullDirectory);

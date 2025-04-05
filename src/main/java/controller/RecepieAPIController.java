@@ -1,17 +1,20 @@
 package controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.Recepie;
 import service.RecepiesStorage;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 @RestController
-public class Controller implements RecepiesService {
+@RequestMapping("/api")
+public class RecepieAPIController implements RecepiesService {
     private RecepiesStorage recepiesStorage;
 
-    public Controller(RecepiesStorage recepiesStorage) {
+    public RecepieAPIController(RecepiesStorage recepiesStorage) {
         this.recepiesStorage = recepiesStorage;
     }
 
@@ -25,7 +28,7 @@ public class Controller implements RecepiesService {
         }
     }
 
-    @GetMapping
+    @GetMapping("/recepies")
     public List<Recepie> getAllRecepies() {
         try {
             return recepiesStorage.getAll();
