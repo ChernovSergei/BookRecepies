@@ -1,3 +1,5 @@
+package service;
+
 public interface Input {
     String askString(String question);
 
