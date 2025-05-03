@@ -9,8 +9,8 @@ import service.RecepiesStorage;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api")
+//@RestController
+//@RequestMapping("/api")
 public class RecepieAPIController implements RecepiesService {
     private RecepiesStorage recepiesStorage;
 
@@ -18,7 +18,7 @@ public class RecepieAPIController implements RecepiesService {
         this.recepiesStorage = recepiesStorage;
     }
 
-    @Override
+    //@Override
     public void save(Recepie recepie) {
         try {
             recepiesStorage.save(recepie);
@@ -28,7 +28,7 @@ public class RecepieAPIController implements RecepiesService {
         }
     }
 
-    @GetMapping("/recepies")
+    //@GetMapping("/recepies")
     public List<Recepie> getAllRecepies() {
         try {
             return recepiesStorage.getAll();
