@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import service.Recepie;
 import service.RecepiesStorage;
 
@@ -20,7 +22,7 @@ public class HtmlController {
 
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "mainPage";
     }
 
     @GetMapping("/recepies")
@@ -36,5 +38,23 @@ public class HtmlController {
         Recepie recepie = recepiesValue.stream().filter(r -> r.getName().equals(recepieID)).findFirst().orElseThrow();
         model.addAttribute("recepie", recepie);
         return "recepie";
+    }
+
+    @GetMapping("/addRecepie")
+    public String getNewRecepie() {
+        return "addRecepie";
+    }
+
+    @PostMapping("/submitRecipe")
+    public String postRecepie(@RequestParam String recipeName,
+                              @RequestParam String toolName,
+                              @RequestParam String productName,
+                              @RequestParam String actionName) {
+        System.out.println("message " +
+                "Recipe submitted: " + recipeName +
+                "with tool " + toolName +
+                ", product" + productName +
+                ", action " + actionName);
+        return "redirect:/addRecepie";
     }
 }
