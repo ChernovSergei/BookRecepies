@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import service.Recepie;
 import service.RecepiesStorage;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class HtmlController {
@@ -49,11 +47,13 @@ public class HtmlController {
     public String postRecepie(@RequestParam String recipeName,
                               @RequestParam String toolName,
                               @RequestParam String productName,
+                              @RequestParam String productType,
                               @RequestParam String actionName) {
         System.out.println("message " +
                 "Recipe submitted: " + recipeName +
                 "with tool " + toolName +
                 ", product" + productName +
+                ", product type" + productType +
                 ", action " + actionName);
         return "redirect:/addRecepie";
     }
