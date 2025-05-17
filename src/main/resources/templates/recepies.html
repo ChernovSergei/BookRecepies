@@ -6,6 +6,11 @@
 </head>
 <body>
     <h1>Recepies</h1>
+    <p>
+        <a href="/">Main Menu</a>
+        <br>
+        <a href="/addRecepie">Add New Recepie</a>
+    </p>
     <ul>
         <li th:each="recepie : ${recepies}">
             <a th:href="@{/recepie/{name}(name=${recepie.name})}" th:text="'Recepie: ' + ${recepie.name}">

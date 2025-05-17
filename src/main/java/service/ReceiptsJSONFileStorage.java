@@ -28,6 +28,7 @@ public class ReceiptsJSONFileStorage implements RecepiesStorage {
 
     @Override
     public void save(Recepie recepie) {
+        recepie.setId(getLastId());
         String JSONRecepie = JSONRecepieConverter.recepieToJson(recepie);
         try (PrintWriter output = new PrintWriter(
                 new BufferedOutputStream(
@@ -50,6 +51,17 @@ public class ReceiptsJSONFileStorage implements RecepiesStorage {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public int getLastId() {
+        int result = -1;
+        List<Recepie> recepieList = getAll();
+        for (Recepie r : recepieList) {
+            if (result < r.getId()) {
+                result = r.getId();
+            }
+        }
+        return result == -1 ? 0 : ++result;
     }
 
     public void saveAll(List<Recepie> recepies) {
