@@ -27,22 +27,22 @@ public class RecepiesReaderWriterToFileTests {
                 "\"action\":{\"name\":\"" + actionName + "\"}" +
                 "}]" +
                 "}";
-        List<Recepie> actualRecepieList = null;
+        List<Recipe> actualRecepieList = null;
 
-        Recepie expectedRecepie = new Recepie(recepieName);
-        List<RecepieStep> borschPreparationSteps = new ArrayList<>();
+        Recipe expectedRecepie = new Recipe(recepieName);
+        List<RecipeStep> borschPreparationSteps = new ArrayList<>();
         Product beet = new Product(productName, productType);
         Tool knife = new Tool(toolName);
         Action cut = new Action(actionName);
-        RecepieStep cutTheBeet = new RecepieStep(beet, knife, cut);
+        RecipeStep cutTheBeet = new RecipeStep(beet, knife, cut);
         borschPreparationSteps.add(cutTheBeet);
         expectedRecepie.setSteps(borschPreparationSteps);
         try {
             Path testStorageFile = Path.of(path + "/" + fileName);
             Files.deleteIfExists(testStorageFile);
-            ReceiptsJSONFileStorage recepiesStorage = new ReceiptsJSONFileStorage(path, fileName);
+            RecipesJSONFileStorage recepiesStorage = new RecipesJSONFileStorage(path, fileName);
             //recepieWriteToFile.saveRecepie(actualRecepie);
-            List<Recepie> recepies = new ArrayList<>();
+            List<Recipe> recepies = new ArrayList<>();
             recepies.add(expectedRecepie);
             recepiesStorage.saveAll(recepies);
             actualRecepieList = recepiesStorage.getAll();
@@ -85,32 +85,32 @@ public class RecepiesReaderWriterToFileTests {
                 "\"action\":{\"name\":\"" + actionName2 + "\"}" +
                 "}]" +
                 "}";
-        List<Recepie> actualRecepieList = null;
+        List<Recipe> actualRecepieList = null;
 
-        Recepie expectedRecepie1 = new Recepie(recepieName1);
-        List<RecepieStep> borschPreparationSteps = new ArrayList<>();
+        Recipe expectedRecepie1 = new Recipe(recepieName1);
+        List<RecipeStep> borschPreparationSteps = new ArrayList<>();
         Product beet = new Product(productName1, productType1);
         Tool knife = new Tool(toolName1);
         Action cut = new Action(actionName1);
-        RecepieStep cutTheBeet = new RecepieStep(beet, knife, cut);
+        RecipeStep cutTheBeet = new RecipeStep(beet, knife, cut);
         borschPreparationSteps.add(cutTheBeet);
         expectedRecepie1.setSteps(borschPreparationSteps);
 
-        Recepie expectedRecepie2 = new Recepie(recepieName2);
-        List<RecepieStep> carbonaraPreporationSteps = new ArrayList<>();
+        Recipe expectedRecepie2 = new Recipe(recepieName2);
+        List<RecipeStep> carbonaraPreporationSteps = new ArrayList<>();
         Product fetuchini = new Product(productName2, productType2);
         Tool pot = new Tool(toolName2);
         Action boil = new Action(actionName2);
-        RecepieStep boilFetuchini = new RecepieStep(fetuchini, pot, boil);
+        RecipeStep boilFetuchini = new RecipeStep(fetuchini, pot, boil);
         carbonaraPreporationSteps.add(boilFetuchini);
         expectedRecepie2.setSteps(carbonaraPreporationSteps);
         try {
             Path testStorageFile = Path.of(path + "/" + fileName);
             Files.deleteIfExists(testStorageFile);
-            ReceiptsJSONFileStorage recepiesStorage = new ReceiptsJSONFileStorage(path, fileName);
+            RecipesJSONFileStorage recepiesStorage = new RecipesJSONFileStorage(path, fileName);
             //recepieWriteToFile.saveRecepie(actualRecepie1);
             //recepieWriteToFile.saveRecepie(actualRecepie2);
-            List<Recepie> recepies = new ArrayList<>();
+            List<Recipe> recepies = new ArrayList<>();
             recepies.add(expectedRecepie1);
             recepies.add(expectedRecepie2);
             recepiesStorage.saveAll(recepies);

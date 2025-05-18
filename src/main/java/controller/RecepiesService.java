@@ -1,11 +1,11 @@
 package controller;
 
-import service.Recepie;
+import service.Recipe;
 
 import java.util.List;
 
 public interface RecepiesService {
-    void save(Recepie recepie);
+    void save(Recipe recepie);
 
-    List<Recepie> getAllRecepies();
+    List<Recipe> getAllRecepies();
 }

@@ -1,14 +1,14 @@
 package service;
 
-public class RecepieConstructor {
-    private Recepie recepie;
+public class RecipeConstructor {
+    private Recipe recepie;
 
-    public Recepie getRecepie() {
+    public Recipe getRecepie() {
         return recepie;
     }
 
-    public Recepie createRecepie(String recepieName) {
-        recepie = new Recepie(recepieName);
+    public Recipe createRecepie(String recepieName) {
+        recepie = new Recipe(recepieName);
         return recepie;
     }
 
@@ -16,7 +16,7 @@ public class RecepieConstructor {
         Product userProduct = new Product(productName, productType);
         Tool userTool = new Tool(tool);
         Action userAction = new Action(action);
-        RecepieStep recepieStep = new RecepieStep(userProduct, userTool, userAction);
-        recepie.getSteps().add(recepieStep);
+        RecipeStep recipeStep = new RecipeStep(userProduct, userTool, userAction);
+        recepie.getSteps().add(recipeStep);
     }
 }

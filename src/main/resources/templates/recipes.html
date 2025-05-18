@@ -5,15 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <h1>Recepies</h1>
+    <h1>Recipes</h1>
     <p>
         <a href="/">Main Menu</a>
         <br>
-        <a href="/addRecepie">Add New Recepie</a>
+        <a href="/addRecipe">Add New Recepie</a>
     </p>
     <ul>
-        <li th:each="recepie : ${recepies}">
-            <a th:href="@{/recepie/{name}(name=${recepie.name})}" th:text="'Recepie: ' + ${recepie.name}">
+        <li th:each="recipe : ${recipes}">
+            <a th:href="@{/recipe/{name}(name=${recipe.name})}" th:text="'Recipe: ' + ${recipe.name}">
             </a>
         </li>
     </ul>

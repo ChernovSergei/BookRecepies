@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Recepie {
+public class Recipe {
     private int id;
     private String name;
-    private List<RecepieStep> steps;
+    private List<RecipeStep> steps;
 
-    public Recepie(String name) {
+    public Recipe(String name) {
         this.id = -1;
         this.name = name;
         this.steps = new ArrayList<>();
@@ -31,11 +31,11 @@ public class Recepie {
         this.name = name;
     }
 
-    public List<RecepieStep> getSteps() {
+    public List<RecipeStep> getSteps() {
         return steps;
     }
 
-    public void setSteps(List<RecepieStep> steps) {
+    public void setSteps(List<RecipeStep> steps) {
         this.steps = steps;
     }
 
@@ -51,7 +51,7 @@ public class Recepie {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Recepie recepie = (Recepie) o;
+        Recipe recepie = (Recipe) o;
         return id == recepie.id;
     }
 
