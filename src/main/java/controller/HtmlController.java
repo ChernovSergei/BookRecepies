@@ -4,37 +4,61 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import service.Recepie;
-import service.RecepiesStorage;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import service.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class HtmlController {
-    private RecepiesStorage recepiesStorage;
+    private RecipesStorage recipesStorage;
 
-    public HtmlController(RecepiesStorage recepiesStorage) {
-        this.recepiesStorage = recepiesStorage;
+    public HtmlController(RecipesStorage recipesStorage) {
+        this.recipesStorage = recipesStorage;
     }
 
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "mainPage";
     }
 
-    @GetMapping("/recepies")
-    public String getAllRecepies(Model model) {
-        List<Recepie> recepiesValue = recepiesStorage.getAll();
-        model.addAttribute("recepies", recepiesValue);
-        return "recepies";
+    @GetMapping("/recipes")
+    public String getAllRecipes(Model model) {
+        List<Recipe> recipes = recipesStorage.getAll();
+        model.addAttribute("recipes", recipes);
+        return "recipes";
     }
 
-    @GetMapping("/recepie/{recepieID}")
-    public String getRecepie(Model model, @PathVariable String recepieID) {
-        List<Recepie> recepiesValue = recepiesStorage.getAll();
-        Recepie recepie = recepiesValue.stream().filter(r -> r.getName().equals(recepieID)).findFirst().orElseThrow();
-        model.addAttribute("recepie", recepie);
-        return "recepie";
+    @GetMapping("/recipe/{recipeID}")
+    public String getRecipe(Model model, @PathVariable String recipeID) {
+        List<Recipe> recipesValue = recipesStorage.getAll();
+        Recipe recipe = recipesValue.stream().filter(r -> r.getName().equals(recipeID)).findFirst().orElseThrow();
+        model.addAttribute("recipe", recipe);
+        return "recipe";
+    }
+
+    @GetMapping("/addRecipe")
+    public String getNewRecipe() {
+        return "addRecipe";
+    }
+
+    @PostMapping("/submitRecipe")
+    public String postRecipe(@RequestParam String recipeName,
+                             @RequestParam String toolName,
+                             @RequestParam String productName,
+                             @RequestParam String productType,
+                             @RequestParam String actionName) {
+        Recipe recipe = new Recipe(recipeName);
+        Product product = new Product(productName, productType);
+        Tool tool = new Tool(toolName);
+        Action action = new Action(actionName);
+        RecipeStep step = new RecipeStep(product,tool, action);
+        List<RecipeStep> steps = new ArrayList<>();
+        steps.add(step);
+        recipe.setSteps(steps);
+        recipesStorage.save(recipe);
+        return "redirect:/addRecipe";
     }
 }

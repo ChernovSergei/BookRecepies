@@ -5,7 +5,7 @@ import service.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONRecepieConverterTest {
+public class JSONRecipeConverterTest {
 
     @Test
     public void whenExpectedEqualsToActualRecepie() {
@@ -14,16 +14,16 @@ public class JSONRecepieConverterTest {
         String productType = "Vegetable";
         String toolName = "Knife";
         String actionName = "Cut";
-        Recepie expectedRecepie = new Recepie(recepieName);
+        Recipe expectedRecepie = new Recipe(recepieName);
         Product beetRoot = new Product(productName, productType);
         Tool knife = new Tool(toolName);
         Action cut = new Action(actionName);
-        List<RecepieStep> recepieSteps = new ArrayList<>();
-        RecepieStep recepieStep = new RecepieStep(beetRoot, knife, cut);
-        recepieSteps.add(recepieStep);
-        expectedRecepie.setSteps(recepieSteps);
+        List<RecipeStep> recipeSteps = new ArrayList<>();
+        RecipeStep recipeStep = new RecipeStep(beetRoot, knife, cut);
+        recipeSteps.add(recipeStep);
+        expectedRecepie.setSteps(recipeSteps);
         String recepieInJSON = "{\"name\":\"Borsch\",\"steps\":[{\"product\":{\"name\":\"Beet root\",\"type\":\"Vegetable\"},\"tool\":{\"name\":\"Knife\"},\"action\":{\"name\":\"Cut\"}}]}";
-        Recepie result = JSONRecepieConverter.jsonToRecepie(recepieInJSON);
+        Recipe result = JSONRecipeConverter.jsonToRecepie(recepieInJSON);
         Assert.assertEquals(expectedRecepie, result);
     }
 }

@@ -3,13 +3,13 @@ package service;
 import java.util.List;
 import java.util.Objects;
 
-public class RecepieStep {
+public class RecipeStep {
     private Product product;
     private Tool tool;
     private Action action;
-    private List<RecepieStep> subSteps = null;
+    private List<RecipeStep> subSteps = null;
 
-    public RecepieStep(Product product, Tool tool, Action action) {
+    public RecipeStep(Product product, Tool tool, Action action) {
         this.product = product;
         this.tool = tool;
         this.action = action;
@@ -53,7 +53,7 @@ public class RecepieStep {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RecepieStep that = (RecepieStep) o;
+        RecipeStep that = (RecipeStep) o;
         return Objects.equals(product, that.product) && Objects.equals(tool, that.tool)
                 && Objects.equals(action, that.action) && Objects.equals(subSteps, that.subSteps);
     }

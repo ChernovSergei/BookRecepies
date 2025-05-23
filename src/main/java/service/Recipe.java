@@ -4,13 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Recepie {
+public class Recipe {
+    private int id;
     private String name;
-    private List<RecepieStep> steps;
+    private List<RecipeStep> steps;
 
-    public Recepie(String name) {
+    public Recipe(String name) {
+        this.id = -1;
         this.name = name;
         this.steps = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -21,32 +31,32 @@ public class Recepie {
         this.name = name;
     }
 
-    public List<RecepieStep> getSteps() {
+    public List<RecipeStep> getSteps() {
         return steps;
     }
 
-    public void setSteps(List<RecepieStep> steps) {
+    public void setSteps(List<RecipeStep> steps) {
         this.steps = steps;
     }
 
     @Override
     public String toString() {
-        return "service.Recepie{" +
-                "name='" + name + '\'' +
+        return "Recepie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", steps=" + steps +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Recepie recepie = (Recepie) o;
-        return Objects.equals(name, recepie.name) && Objects.equals(steps, recepie.steps);
+        Recipe recepie = (Recipe) o;
+        return id == recepie.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, steps);
+        return Objects.hashCode(id);
     }
 }

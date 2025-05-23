@@ -1,0 +1,3 @@
+function sendRecepie() {
+    alert("Alert");
+}

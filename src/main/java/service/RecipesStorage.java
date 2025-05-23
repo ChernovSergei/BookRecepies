@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface RecepiesStorage {
-    void save(Recepie recepie);
+public interface RecipesStorage {
+    void save(Recipe recepie);
 
-    List<Recepie> getAll();
+    List<Recipe> getAll();
 }

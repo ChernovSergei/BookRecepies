@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Recipe</title>
+    <!-- <script src="/js/sendMessageScript.js"></script> -->
+</head>
+<body>
+    <h2>New Recipe</h2>
+    <p>
+        <a href="/">Main Menu</a>
+        <br>
+        <a href="/recipes">View All Recipes</a>
+    </p>
+    <form action="/submitRecipe" method="post">
+        <label> Recipe Name:
+            <input type="text" name="recipeName" />
+        </label>
+        <br>
+        <label> Tool Name:
+            <input type="text" name="toolName"/>
+        </label>
+        <br>
+        <label> Product Name:
+            <input type="text" name="productName"/>
+        </label>
+        <label> Product Type:
+            <input type="text" name="productType"/>
+        </label>
+        <br>
+        <label> Action Name:
+            <input type="text" name="actionName"/>
+        </label>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

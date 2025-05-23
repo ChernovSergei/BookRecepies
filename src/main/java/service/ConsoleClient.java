@@ -6,7 +6,7 @@ public class ConsoleClient {
 
     private final Input input = new ConsoleInput();
     private RecepiesService service;
-    private final RecepieConstructor recepieConstructor = new RecepieConstructor();
+    private final RecipeConstructor recipeConstructor = new RecipeConstructor();
 
     public ConsoleClient(RecepiesService service) {
         this.service = service;
@@ -14,7 +14,7 @@ public class ConsoleClient {
 
     public void createRecepie() {
         String recepieName = input.askString("Enter the recepie name");
-        recepieConstructor.createRecepie(recepieName);
+        recipeConstructor.createRecepie(recepieName);
     }
 
     public void addRecepieStep() {
@@ -22,11 +22,11 @@ public class ConsoleClient {
         String productType = input.askString("Enter the product type");
         String tool = input.askString("Enter the tool name");
         String action = input.askString("Enter the action name");
-        recepieConstructor.addRecepieStep(productName, productType, tool, action);
+        recipeConstructor.addRecepieStep(productName, productType, tool, action);
     }
 
     public void saveRecepie() {
-        service.save(recepieConstructor.getRecepie());
+        service.save(recipeConstructor.getRecepie());
     }
 
     public void printAllRecepies() {
