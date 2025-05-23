@@ -26,15 +26,15 @@ public class HtmlController {
 
     @GetMapping("/recipes")
     public String getAllRecipes(Model model) {
-        List<Recipe> recipesValue = recipesStorage.getAll();
-        model.addAttribute("recipes", recipesValue);
+        List<Recipe> recipes = recipesStorage.getAll();
+        model.addAttribute("recipes", recipes);
         return "recipes";
     }
 
     @GetMapping("/recipe/{recipeID}")
-    public String getRecipe(Model model, @PathVariable String recepieID) {
+    public String getRecipe(Model model, @PathVariable String recipeID) {
         List<Recipe> recipesValue = recipesStorage.getAll();
-        Recipe recipe = recipesValue.stream().filter(r -> r.getName().equals(recepieID)).findFirst().orElseThrow();
+        Recipe recipe = recipesValue.stream().filter(r -> r.getName().equals(recipeID)).findFirst().orElseThrow();
         model.addAttribute("recipe", recipe);
         return "recipe";
     }

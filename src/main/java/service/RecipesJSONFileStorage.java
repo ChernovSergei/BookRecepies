@@ -3,6 +3,7 @@ package service;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -53,7 +54,7 @@ public class RecipesJSONFileStorage implements RecipesStorage {
         return result;
     }
 
-    public Recipe getRecipeById(int id) {
+    public Recipe getRecipe(int id) {
         Recipe result = null;
         for (Recipe recipe : getAll()) {
             if (id == recipe.getId()) {
@@ -61,6 +62,20 @@ public class RecipesJSONFileStorage implements RecipesStorage {
             }
         }
         return result;
+    }
+
+    public void deleteRecipe(int id) {
+        try {
+            List<String> recipes = Files.readAllLines(fullDirectory);
+            for (int i = 0; i < recipes.size(); i++) {
+                if (recipes.get(i).startsWith("{\"id\":" + id)) {
+                    recipes.remove(i);
+                }
+            }
+            Files.write(fullDirectory, recipes, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getLastId() {
