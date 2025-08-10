@@ -2,21 +2,17 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import service.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class HtmlController {
-    private RecipesStorage recipesStorage;
+    private RecipesRepository recipesRepository;
 
-    public HtmlController(RecipesStorage recipesStorage) {
-        this.recipesStorage = recipesStorage;
+    public HtmlController(RecipesRepository recipesRepository) {
+        this.recipesRepository = recipesRepository;
     }
 
     @GetMapping("/")
@@ -26,15 +22,14 @@ public class HtmlController {
 
     @GetMapping("/recipes")
     public String getAllRecipes(Model model) {
-        List<Recipe> recipes = recipesStorage.getAll();
+        List<Recipe> recipes = recipesRepository.getAll();
         model.addAttribute("recipes", recipes);
         return "recipes";
     }
 
     @GetMapping("/recipe/{recipeID}")
-    public String getRecipe(Model model, @PathVariable String recipeID) {
-        List<Recipe> recipesValue = recipesStorage.getAll();
-        Recipe recipe = recipesValue.stream().filter(r -> r.getName().equals(recipeID)).findFirst().orElseThrow();
+    public String getRecipe(Model model, @PathVariable int recipeID) {
+        Recipe recipe = recipesRepository.getRecipe(recipeID);
         model.addAttribute("recipe", recipe);
         return "recipe";
     }
@@ -45,20 +40,8 @@ public class HtmlController {
     }
 
     @PostMapping("/submitRecipe")
-    public String postRecipe(@RequestParam String recipeName,
-                             @RequestParam String toolName,
-                             @RequestParam String productName,
-                             @RequestParam String productType,
-                             @RequestParam String actionName) {
-        Recipe recipe = new Recipe(recipeName);
-        Product product = new Product(productName, productType);
-        Tool tool = new Tool(toolName);
-        Action action = new Action(actionName);
-        RecipeStep step = new RecipeStep(product,tool, action);
-        List<RecipeStep> steps = new ArrayList<>();
-        steps.add(step);
-        recipe.setSteps(steps);
-        recipesStorage.save(recipe);
+    public String postRecipe(@RequestBody Recipe recipe) {
+        recipesRepository.save(recipe);
         return "redirect:/addRecipe";
     }
 }
