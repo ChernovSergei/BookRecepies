@@ -1,1 +1,0 @@
-{"name":"Borsch","steps":[{"product":{"name":"Carrot","type":"Vegetable"},"tool":{"name":"Knife"},"action":{"name":"Cut"}},{"product":{"name":"Beef","type":"Meet"},"tool":{"name":"Pan"},"action":{"name":"Fry"}}]}
