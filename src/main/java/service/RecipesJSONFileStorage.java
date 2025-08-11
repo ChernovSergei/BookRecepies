@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RecipesJSONFileStorage implements RecipesStorage {
+public class RecipesJSONFileStorage implements RecipesRepository {
     private final Path fullDirectory;
 
     public RecipesJSONFileStorage(@Value("${storage.directory}") String storageDirectory, @Value("${storage.path}") String storageName) throws IOException {
@@ -31,10 +31,8 @@ public class RecipesJSONFileStorage implements RecipesStorage {
     public void save(Recipe recepie) {
         recepie.setId(getLastId());
         String JSONRecepie = JSONRecipeConverter.recepieToJson(recepie);
-        try (PrintWriter output = new PrintWriter(
-                new BufferedOutputStream(
-                        new FileOutputStream(this.fullDirectory.toFile(), true)))) {
-            output.println(JSONRecepie);
+        try {
+            Files.writeString(fullDirectory, JSONRecepie);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,6 +52,7 @@ public class RecipesJSONFileStorage implements RecipesStorage {
         return result;
     }
 
+    @Override
     public Recipe getRecipe(int id) {
         Recipe result = null;
         for (Recipe recipe : getAll()) {
