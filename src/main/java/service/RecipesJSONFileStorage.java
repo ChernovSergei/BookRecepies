@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RecipesJSONFileStorage implements RecipesRepository {
     private final Path fullDirectory;
+    RecipeBook recipeBook = new RecipeBook();
 
     public RecipesJSONFileStorage(@Value("${storage.directory}") String storageDirectory, @Value("${storage.path}") String storageName) throws IOException {
         Path directory = Path.of(storageDirectory);
@@ -24,6 +25,25 @@ public class RecipesJSONFileStorage implements RecipesRepository {
         }
         if (!Files.exists(this.fullDirectory)) {
             Files.createFile(this.fullDirectory);
+        }
+    }
+
+    public void readRecipeBook() {
+        String recipeBookInJSON;
+        try {
+            recipeBookInJSON = Files.readString(this.fullDirectory);
+            recipeBook = JSONRecipeBookConverter.jsonToRecipeBook(recipeBookInJSON);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeRecipeBook() {
+        String JSONRecipeBook = JSONRecipeBookConverter.recipeBookToJson(recipeBook);
+        try {
+            Files.writeString(fullDirectory, JSONRecipeBook);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
