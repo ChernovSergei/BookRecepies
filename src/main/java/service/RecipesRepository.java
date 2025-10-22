@@ -7,7 +7,11 @@ import java.util.List;
 public interface RecipesRepository {
     void save(Recipe recepie);
 
+    void update(Recipe recipe);
+
     List<Recipe> getAll();
 
     Recipe getRecipe(int id);
+
+    void deleteRecipe(int id);
 }
