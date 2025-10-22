@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
             actionName=document.getElementById("actionName").value
         };
 
-        fetch("/addRecepie", {
+        fetch("/addRecipe", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
