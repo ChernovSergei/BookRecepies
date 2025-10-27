@@ -3,8 +3,11 @@ package service;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -71,6 +74,17 @@ public class RecipesJSONFileStorage implements RecipesRepository {
     public List<Recipe> getAll() {
         readRecipeBook();
         return recipeBook.getRecipes().values().stream().toList();
+    }
+
+    @Override
+    public Map<Integer, String> getAllRecipeNames() {
+        readRecipeBook();
+        Map<Integer, String> result =
+                recipeBook.getRecipes()
+                        .values()
+                        .stream()
+                        .collect(Collectors.toMap(Recipe::getId, Recipe::getName));
+        return result;
     }
 
     @Override

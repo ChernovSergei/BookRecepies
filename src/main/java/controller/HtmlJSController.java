@@ -24,6 +24,12 @@ public class HtmlJSController {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/api/recipeNames")
+    public Map<Integer, String> getAllRecipeNames() {
+        return recipesRepository.getAllRecipeNames();
+    }
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/delete/recipe/{id}")
     public void deleteRecipe(@PathVariable("id") int id) {
         recipesRepository.deleteRecipe(id);
