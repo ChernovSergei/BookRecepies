@@ -23,6 +23,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
     //RESTfull API - ???
     //Learn throw new RuntimeException
     //Rest - interconnection protocol above http
+    //SWAGER - standard to review API hands
+    //20251111
+    //
 
 @SpringBootApplication(scanBasePackages = {"service", "controller"})
 public class Launcher {
